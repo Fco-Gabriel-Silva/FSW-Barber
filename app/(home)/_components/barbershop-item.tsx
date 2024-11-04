@@ -14,10 +14,15 @@ const BarbershopItem = ({ barbershop }: BarbershopItemsProps) => {
     <Card className="min-w-[167px] max-w-[167px] rounded-2xl">
       <CardContent className="px-1 pb-0">
         <div className="relative w-full h-[159px]">
-          <Badge className="flex items-center justify-center absolute top-3 letf-3 z-50">
-            <StarIcon size={12} />
-            <span>5,0</span>
-          </Badge>
+          <div className="absolute top-2 left-2 z-50">
+            <Badge
+              variant="secondary"
+              className="opacity-90 flex gap-1 items-center justify-center absolute top-3 letf-3"
+            >
+              <StarIcon size={12} className="fill-primary text-primary" />
+              <span className="text-xs">5,0</span>
+            </Badge>
+          </div>
           <Image
             alt={barbershop.name}
             src={barbershop.imageUrl}
