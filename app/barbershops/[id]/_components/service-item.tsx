@@ -3,6 +3,7 @@
 import { Button } from "@/_components/ui/button";
 import { Calendar } from "@/_components/ui/calendar";
 import { Card, CardContent } from "@/_components/ui/card";
+
 import {
   Sheet,
   SheetContent,
@@ -14,6 +15,7 @@ import {
 import { Barbershop, Booking, Service } from "@prisma/client";
 import { ptBR } from "date-fns/locale";
 import { signIn, useSession } from "next-auth/react";
+
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
@@ -32,6 +34,7 @@ interface ServiceItemProps {
   service: Service;
   isAuthenticated: boolean;
 }
+
 
 const ServiceItem = ({
   barbershop,
@@ -69,10 +72,12 @@ const ServiceItem = ({
     setHour(time);
   };
 
+
   const handleBookingClick = () => {
     if (!isAuthenticated) {
       return signIn("google");
     }
+
   };
 
   const handleBookingSubmit = async () => {
@@ -132,6 +137,7 @@ const ServiceItem = ({
     });
   }, [date, dayBookings]);
 
+
   return (
     <Card>
       <CardContent className="p-3">
@@ -159,6 +165,7 @@ const ServiceItem = ({
                   currency: "BRL",
                 }).format(service.price)}
               </p>
+
 
               {!isAuthenticated && (
                 <Button variant={"secondary"} onClick={handleBookingClick}>
@@ -281,6 +288,7 @@ const ServiceItem = ({
                   </SheetContent>
                 </Sheet>
               )}
+
             </div>
           </div>
         </div>
