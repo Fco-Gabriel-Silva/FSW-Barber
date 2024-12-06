@@ -35,7 +35,6 @@ interface ServiceItemProps {
   isAuthenticated: boolean;
 }
 
-
 const ServiceItem = ({
   barbershop,
   service,
@@ -72,12 +71,10 @@ const ServiceItem = ({
     setHour(time);
   };
 
-
   const handleBookingClick = () => {
     if (!isAuthenticated) {
       return signIn("google");
     }
-
   };
 
   const handleBookingSubmit = async () => {
@@ -137,7 +134,6 @@ const ServiceItem = ({
     });
   }, [date, dayBookings]);
 
-
   return (
     <Card>
       <CardContent className="p-3">
@@ -163,9 +159,8 @@ const ServiceItem = ({
                 {Intl.NumberFormat("pt-BR", {
                   style: "currency",
                   currency: "BRL",
-                }).format(service.price)}
+                }).format(Number(service.price))}
               </p>
-
 
               {!isAuthenticated && (
                 <Button variant={"secondary"} onClick={handleBookingClick}>
@@ -243,7 +238,7 @@ const ServiceItem = ({
                               {Intl.NumberFormat("pt-BR", {
                                 style: "currency",
                                 currency: "BRL",
-                              }).format(service.price)}
+                              }).format(Number(service.price))}
                             </h3>
                           </div>
 
@@ -288,7 +283,6 @@ const ServiceItem = ({
                   </SheetContent>
                 </Sheet>
               )}
-
             </div>
           </div>
         </div>

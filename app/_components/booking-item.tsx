@@ -143,7 +143,7 @@ const BookingItem = ({ booking }: BookingItemProps) => {
                   {Intl.NumberFormat("pt-BR", {
                     style: "currency",
                     currency: "BRL",
-                  }).format(booking.service.price)}
+                  }).format(Number(booking.service.price))}
                 </h3>
               </div>
 

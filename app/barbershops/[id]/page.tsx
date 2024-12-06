@@ -5,23 +5,21 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/_lib/auth";
 
 interface BarbershopDetailsPageProps {
-  params: {
-    id?: string;
-  };
+  params: Promise<{ id?: string | undefined }>;
 }
 
 const BarbershopDetailsPage = async ({
   params,
 }: BarbershopDetailsPageProps) => {
   const session = await getServerSession(authOptions);
-  if (!params.id) {
+  if (!(await params).id) {
     // TODO: redirecionar para home page
     return null;
   }
 
   const barbershop = await db.barbershop.findUnique({
     where: {
-      id: params.id,
+      id: (await params).id,
     },
     include: {
       services: true,
