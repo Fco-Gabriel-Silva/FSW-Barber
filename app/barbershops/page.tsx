@@ -4,11 +4,11 @@ import Header from "@/_components/header";
 import { db } from "@/_lib/prisma";
 import { redirect } from "next/navigation";
 
-interface BarbershopsPageProps {
-  searchParams: {
+type BarbershopsPageProps = {
+  searchParams: Promise<any> & {
     search?: string;
   };
-}
+};
 
 const BarbershopsPage = async ({ searchParams }: BarbershopsPageProps) => {
   if (!searchParams.search) {
