@@ -23,7 +23,7 @@ import { generateDayTimeList } from "../_helpers/hours";
 import { format } from "date-fns/format";
 import { time } from "console";
 import { saveBooking } from "../_actions/save-booking";
-import { setHours } from "date-fns";
+import { addDays, setHours } from "date-fns";
 import { setMinutes } from "date-fns";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
@@ -186,7 +186,7 @@ const ServiceItem = ({
                         selected={date}
                         onSelect={handleDateClick}
                         locale={ptBR}
-                        fromDate={new Date()}
+                        fromDate={addDays(new Date(), 1)}
                         styles={{
                           head_cell: {
                             width: "100%",
