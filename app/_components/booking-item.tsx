@@ -32,6 +32,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "./ui/alert-dialog";
+import BookingInfo from "./booking.info";
 
 interface BookingItemProps {
   booking: Prisma.BookingGetPayload<{
@@ -135,38 +136,7 @@ const BookingItem = ({ booking }: BookingItemProps) => {
             {isBookingConfimed ? "Confirmado" : "Finalizado"}
           </Badge>
 
-          <Card>
-            <CardContent className="flex flex-col p-3 gap-3">
-              <div className="flex justify-between items-center">
-                <h2 className="font-bold">{booking.service.name}</h2>
-                <h3 className="font-bold text-sm">
-                  {Intl.NumberFormat("pt-BR", {
-                    style: "currency",
-                    currency: "BRL",
-                  }).format(Number(booking.service.price))}
-                </h3>
-              </div>
-
-              <div className="flex justify-between items-center">
-                <h3 className="text-gray-400 text-sm">Data</h3>
-                <h4 className="text-sm">
-                  {format(booking.date, "dd 'de' MMMM", {
-                    locale: ptBR,
-                  })}
-                </h4>
-              </div>
-
-              <div className="flex justify-between items-center">
-                <h3 className="text-gray-400 text-sm">Horário</h3>
-                <h4 className="text-sm">{format(booking.date, "hh:mm")}</h4>
-              </div>
-
-              <div className="flex justify-between items-center">
-                <h3 className="text-gray-400 text-sm">Barberaria</h3>
-                <h4 className="text-sm">{booking.barbershop.name}</h4>
-              </div>
-            </CardContent>
-          </Card>
+          <BookingInfo booking={booking} />
 
           <SheetFooter className="flex-row gap-3 mt-6">
             <SheetClose asChild>
